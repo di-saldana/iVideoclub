@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-videoclub',
@@ -6,8 +7,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./videoclub.page.scss'],
 })
 export class VideoclubPage implements OnInit, OnDestroy {
+  id: any;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
     console.log('Videoclub ngOnInit');
@@ -27,4 +29,9 @@ export class VideoclubPage implements OnInit, OnDestroy {
   ionViewDidLeave() {
     console.log('Videoclub ionViewDidLeave');
   }
+
+  verPaginaDetalle(id: any): void {
+    this.router.navigate(['/detalle', id]);
+  }
+  
 }
