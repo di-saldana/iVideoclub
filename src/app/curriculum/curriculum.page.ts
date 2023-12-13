@@ -7,7 +7,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class CurriculumPage implements OnInit, OnDestroy {
 
-  constructor() { }
+  listaTrabajos: {
+    fecha: string,
+    desc: string
+  }[];
+
+  constructor() {
+    this.listaTrabajos = [
+      {fecha: 'dd-mm-yyyy', desc: 'Trabajo 1'}, 
+      {fecha: 'dd-mm-yyyy', desc: 'Trabajo 2'},
+    ]
+  }
 
   ngOnInit() {
     console.log('Curriculum ngOnInit');
