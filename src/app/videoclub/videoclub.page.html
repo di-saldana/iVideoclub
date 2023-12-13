@@ -14,7 +14,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
+  <!-- <ion-list>
     <ion-item button detail (click)="verPaginaDetalle(1)">
       <ion-thumbnail slot="start">
         <ion-img src="assets/posters/el_padrino.jpg"></ion-img>
@@ -75,5 +75,23 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  
+ -->  
+
+ <ion-list *ngIf="listaPeliculas">
+  <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
+      
+    <ion-thumbnail slot="start">
+      <ion-img src="poster"></ion-img> 
+      <!-- Fix -->
+    </ion-thumbnail>
+    
+    <ion-label> 
+      <h2>{{pelicula.title}}</h2>
+      <p><b>Director: </b>{{pelicula.director}}</p>
+      <p><b>Año: </b>{{pelicula.year}}</p>
+    </ion-label>
+
+  </ion-item>
+</ion-list>
+
 </ion-content>

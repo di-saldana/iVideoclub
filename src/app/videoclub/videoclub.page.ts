@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { PeliculasService } from '../services/peliculas.service'
 
 @Component({
   selector: 'app-videoclub',
@@ -8,8 +9,11 @@ import { Router } from '@angular/router';
 })
 export class VideoclubPage implements OnInit, OnDestroy {
   id: any;
+  listaPeliculas: any[]
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private peliculasService: PeliculasService) {
+    this.listaPeliculas = peliculasService.getPeliculas()
+  }
 
   ngOnInit() {
     console.log('Videoclub ngOnInit');
