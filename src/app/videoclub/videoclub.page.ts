@@ -10,6 +10,7 @@ import { PeliculasService } from '../services/peliculas.service'
 export class VideoclubPage implements OnInit, OnDestroy {
   id: any;
   listaPeliculas: any[]
+  modoLista = true;
 
   constructor(private router: Router, private peliculasService: PeliculasService) {
     this.listaPeliculas = peliculasService.getPeliculas()
@@ -38,4 +39,8 @@ export class VideoclubPage implements OnInit, OnDestroy {
     this.router.navigate(['/detalle', id]);
   }
   
+  cambiarVista(): void {
+    this.modoLista = !this.modoLista;
+  }
+
 }
