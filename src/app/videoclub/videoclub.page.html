@@ -7,11 +7,11 @@
     </ion-buttons>
     
     <ion-buttons slot="primary">   
-      <ion-button *ngIf="modoLista == true" (click)="cambiarVista()">
+      <ion-button *ngIf="modoLista" (click)="cambiarVista()">
         <ion-icon slot="icon-only" name="apps-sharp"></ion-icon>
       </ion-button>
       
-      <ion-button *ngIf="modoLista == false" (click)="cambiarVista()">        
+      <ion-button *ngIf="!modoLista" (click)="cambiarVista()">        
         <ion-icon slot="icon-only" name="reorder-four-sharp"></ion-icon>      
       </ion-button> 
     </ion-buttons>  
@@ -26,7 +26,7 @@
     </ion-toolbar>
   </ion-header>
 
- <ion-list *ngIf="listaPeliculas">
+ <!-- <ion-list *ngIf="listaPeliculas">
   <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
 
     <ion-thumbnail slot="start">
@@ -40,6 +40,40 @@
     </ion-label>
 
   </ion-item>
-</ion-list>
+</ion-list> -->
+
+  <!-- Lista de películas -->
+  <ion-list *ngIf="modoLista; else modoGrid">
+    <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
+      <ion-thumbnail slot="start">
+        <ion-img [src]="'assets/posters/' + pelicula.poster"></ion-img>
+      </ion-thumbnail>
+      <ion-label> 
+        <h2>{{pelicula.title}}</h2>
+        <p><b>Director: </b>{{pelicula.director}}</p>
+        <p><b>Año: </b>{{pelicula.year}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+<!-- Vista tipo cuadrícula -->
+<ng-template #modoGrid>
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngFor="let pelicula of listaPeliculas; let id = index">
+        <ion-col size-md="3" size-lg="3" size-xl="3" size-sm="4" size-xs="6" (click)="verPaginaDetalle(id)">
+          <ion-thumbnail class="grid-thumbnail">
+            <ion-img class="poster" [src]="'assets/posters/' + pelicula.poster"></ion-img>
+          </ion-thumbnail>
+          <ion-label> 
+            <h2>{{pelicula.title}}</h2>
+            <p><b>Director: </b>{{pelicula.director}}</p>
+            <p><b>Año: </b>{{pelicula.year}}</p>
+          </ion-label>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ng-template>
 
 </ion-content>
