@@ -14,8 +14,11 @@ export class CurriculumPage implements OnInit, OnDestroy {
 
   constructor() {
     this.listaTrabajos = [
-      {fecha: 'dd-mm-yyyy', desc: 'Trabajo 1'}, 
-      {fecha: 'dd-mm-yyyy', desc: 'Trabajo 2'},
+      {fecha: 'Agosto 2022 – Agosto 2023', desc: 'L3 Harris - Ingeniera de Software'}, 
+      {fecha: 'Mayo 2021 – Julio 2021', desc: 'L3 Harris - Intern'},
+      {fecha: 'Junio 2020 – Agosto 2020', desc: 'Verizon - Intern'},
+      {fecha: 'Mayo 2019 – Agosto 2019', desc: 'Hewlett Packard Enterprise - Intern'},
+      {fecha: 'Junio 2018 – Agosto 2018', desc: 'AbbVie - Intern'},
     ]
   }
 
