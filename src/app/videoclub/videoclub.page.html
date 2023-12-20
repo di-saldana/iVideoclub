@@ -20,13 +20,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">iVideoclub</ion-title>
     </ion-toolbar>
   </ion-header>
 
+<div *ngIf="listaPeliculas && listaPeliculas.length > 0; else emptyList">
   <ion-list *ngIf="modoLista; else modoGrid">
     <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
       <ion-thumbnail slot="start">
@@ -58,5 +59,14 @@
       </ion-row>
     </ion-grid>
   </ng-template>
+</div>
+
+<ng-template #emptyList>
+  <ion-content>
+    <ion-card class="empty-list">
+      <p>La lista está vacía.</p>
+    </ion-card>
+  </ion-content>
+</ng-template>
 
 </ion-content>
