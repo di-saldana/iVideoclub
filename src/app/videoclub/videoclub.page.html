@@ -29,9 +29,9 @@
 
 <div *ngIf="listaPeliculas && listaPeliculas.length > 0; else emptyList">
   <ion-list *ngIf="modoLista; else modoGrid">
-    <ion-item *ngFor="let pelicula of listaPeliculas; index as id" (click)="verPaginaDetalle(id)" detail>
+    <ion-item *ngFor="let pelicula of listaPeliculas" (click)="verPaginaDetalle(pelicula.id)" detail>
       <ion-thumbnail slot="start">
-        <ion-img [src]="'assets/posters/' + pelicula.poster"></ion-img>
+        <ion-img class="poster" src="{{pelicula.poster}}"></ion-img>
       </ion-thumbnail>
       <ion-label> 
         <h2>{{pelicula.title}}</h2>
@@ -44,10 +44,10 @@
   <ng-template #modoGrid>
     <ion-grid>
       <ion-row>
-        <ng-container *ngFor="let pelicula of listaPeliculas; let id = index">
-          <ion-col size-md="3" size-lg="3" size-xl="3" size-sm="4" size-xs="6" (click)="verPaginaDetalle(id)">
+        <ng-container *ngFor="let pelicula of listaPeliculas">
+          <ion-col size-md="3" size-lg="3" size-xl="3" size-sm="4" size-xs="6" (click)="verPaginaDetalle(pelicula.id)">
             <ion-thumbnail class="grid-thumbnail">
-              <ion-img class="poster" [src]="'assets/posters/' + pelicula.poster"></ion-img>
+              <ion-img class="poster" src="{{pelicula.poster}}"></ion-img>
             </ion-thumbnail>
             <ion-label> 
               <h2>{{pelicula.title}}</h2>

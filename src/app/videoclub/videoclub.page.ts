@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { PeliculasService } from '../services/peliculas.service'
+import { PeliculasAPIService } from '../services/peliculas-api.service'
 
 @Component({
   selector: 'app-videoclub',
@@ -9,15 +9,14 @@ import { PeliculasService } from '../services/peliculas.service'
 })
 export class VideoclubPage implements OnInit, OnDestroy {
   id: any;
-  listaPeliculas: any[]
+  listaPeliculas: any[] = [];
   modoLista = true;
 
-  constructor(private router: Router, private peliculasService: PeliculasService) {
-    this.listaPeliculas = peliculasService.getPeliculas()
-  }
+  constructor(private router: Router, private peliculasAPIService: PeliculasAPIService) {}
 
   ngOnInit() {
     console.log('Videoclub ngOnInit');
+    this.listaPeliculas = this.peliculasAPIService.peliculas;
   }
   ngOnDestroy() {
     console.log('Videoclub ngOnDestroy');
